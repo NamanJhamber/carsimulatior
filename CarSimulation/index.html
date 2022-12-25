@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>VR Car Drive Simulation</title>
+
+  <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+  
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+  <script src="./drive.js"></script>
+  <script src="./game.js"></script>
+
+</head>
+
+<body>
+  <a-scene id="scene" background="color:blue" inspector-plugin-recast>
+    <!---assets loading-->
+
+    <a-assets>
+      <a-asset-item id="city" src="./assets/models/scene.gltf"></a-asset-item>
+      <a-asset-item id="wheel" src="./assets/steering.png"></a-asset-item>
+      <a-asset-item id="acletor" src="./assets/acletor.png"></a-asset-item>
+      <a-asset-item id="break" src="./assets/break.png"></a-asset-item>
+    </a-assets>
+
+    <!--city environment-->
+
+    <a-entity 
+    id="city-set" 
+    gltf-model="#city" 
+    position="0 -2000 -150" 
+    rotation="0 90 0" 
+    scale="1 1 1"></a-entity>
+
+    <!--cameraand cursor-->
+
+    <a-entity 
+    id="camera-rig"
+    movement-controls="speed:0.5"
+    position="0 -1 5"
+    rotation="0 0 0"
+    >
+    <a-entity 
+    id="camera"
+    camera position="0 1.6 0"
+    rotation="0 0 0"
+    look-controls="pointerLockEnabled:false">
+
+    <a-box 
+    id="control-wheel" 
+    src="./assets/steering.png"
+    color="#000"
+    position="0.5 -1 -0.5" 
+    rotation="0 0 0" 
+    scale="0.5 0.5 0.5"></a-box>
+
+    <a-box 
+    id="control-break" 
+    src="./assets/break.png"
+    color="#000"
+    position="0.13 -0.120 -0.163" 
+    rotation="0 0 0" 
+    scale="0.5 0.5 0.5"></a-box>
+
+    <a-box 
+    id="control-acletor" 
+    src="./assets/acletor.png"
+    color="#000"
+    position="0.13 -0.120 -0.163" 
+    rotation="0 0 0" 
+    scale="0.5 0.5 0.5"></a-box>
+
+    </a-entity>
+    </a-entity>
+
+  </a-scene>
+</body>
